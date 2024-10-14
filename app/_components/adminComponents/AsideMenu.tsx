@@ -6,6 +6,7 @@ import {
   LineChart,
   Scissors,
   Users2,
+  ArchiveRestore,
 } from "lucide-react"
 import Link from "next/link"
 import { FC } from "react"
@@ -111,6 +112,24 @@ const AsideMenu: FC<AsideMenuProps> = ({}) => {
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">Analytics</TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              href="/admin/item"
+              className={cn(
+                "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
+                pathname === "/admin/item"
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground",
+              )}
+            >
+              <ArchiveRestore className="h-5 w-5" />
+              <span className="sr-only">Item</span>
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right">Item</TooltipContent>
         </Tooltip>
       </nav>
     </aside>
