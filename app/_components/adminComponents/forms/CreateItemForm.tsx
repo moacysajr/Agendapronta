@@ -17,7 +17,7 @@ import {
 import { Input } from "../../ui/input"
 import { Textarea } from "../../ui/textarea"
 import { UploadButton } from "@/app/_lib/uploadthing"
-import { createItem } from "@/app/_actions/create-item" // Alterado para criar um item
+import { createItem } from "@/app/_actions/create-item"
 import { toast } from "sonner"
 
 interface CreateItemFormProps {
@@ -32,7 +32,7 @@ const formSchema = z.object({
     .number()
     .positive("O preço deve ser positivo")
     .multipleOf(0.01, "O preço deve ter no máximo 2 casas decimais")
-    .min(1, { message: "O item deve ter um preço" }), // Atualizado para "item"
+    .min(1, { message: "O item deve ter um preço" }),
 })
 
 const CreateItemForm: FC<CreateItemFormProps> = ({ barberShopId }) => {
@@ -52,16 +52,15 @@ const CreateItemForm: FC<CreateItemFormProps> = ({ barberShopId }) => {
     const { name, description, imageUrl, price } = values
     try {
       await createItem({
-        // Alterado para chamar a função createItem
         name,
         description,
         imageUrl,
         price: price,
         barbershopId: barberShopId,
       })
-      toast.success("Novo item criado.") // Alterado para "item"
+      toast.success("Novo item criado.")
     } catch (error) {
-      toast.error(`Erro ao criar item: ${error}`) // Alterado para "item"
+      toast.error(`Erro ao criar item: ${error}`)
     }
   }
 
@@ -121,7 +120,6 @@ const CreateItemForm: FC<CreateItemFormProps> = ({ barberShopId }) => {
                 />
               </FormControl>
               <FormDescription>Descrição breve do item.</FormDescription>{" "}
-              {/* Alterado para "item" */}
               <FormMessage />
             </FormItem>
           )}
@@ -144,7 +142,6 @@ const CreateItemForm: FC<CreateItemFormProps> = ({ barberShopId }) => {
                   />
                 </FormControl>
                 <FormDescription>Preço do item.</FormDescription>{" "}
-                {/* Alterado para "item" */}
                 <FormMessage />
               </FormItem>
             )}
@@ -193,11 +190,11 @@ const CreateItemForm: FC<CreateItemFormProps> = ({ barberShopId }) => {
         </div>
 
         <Button className="w-full sm:w-auto" type="submit">
-          Criar novo item {/* Alterado para "item" */}
+          Criar novo item
         </Button>
       </form>
     </Form>
   )
 }
 
-export default CreateItemForm // Alterado para "CreateItemForm"
+export default CreateItemForm

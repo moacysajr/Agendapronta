@@ -40,7 +40,6 @@ const EditItem = ({ item }: BarbershopItemProps) => {
 
       if (result.success) {
         toast.success(result.message)
-        // Aqui você pode adicionar lógica para atualizar a UI ou redirecionar
       } else {
         toast.error(result.message)
       }

@@ -18,7 +18,7 @@ import { Input } from "../../ui/input"
 import { Textarea } from "../../ui/textarea"
 import { UploadButton } from "@/app/_lib/uploadthing"
 import { toast } from "sonner"
-import { updateItem } from "@/app/_actions/update-item" // Alterado para atualizar um item
+import { updateItem } from "@/app/_actions/update-item"
 
 const itemSchema = z.object({
   id: z.string(),
@@ -53,7 +53,7 @@ const UpdateItemForm: FC<UpdateItemFormProps> = ({ initialItem }) => {
     defaultValues: {
       id: initialItem.id,
       name: initialItem.name,
-      description: initialItem.description || "", // Convertemos null para string vazia
+      description: initialItem.description || "",
       imageUrl: initialItem.imageUrl,
       price: Number(initialItem.price),
     },
@@ -61,11 +61,11 @@ const UpdateItemForm: FC<UpdateItemFormProps> = ({ initialItem }) => {
 
   async function onSubmit(values: ItemSchema) {
     try {
-      await updateItem(values) // Alterado para atualizar um item
-      toast.success("Item atualizado com sucesso.") // Alterado para "item"
-      router.push(`/admin/item`) // Alterado para direcionar para "items"
+      await updateItem(values)
+      toast.success("Item atualizado com sucesso.")
+      router.push(`/admin/item`)
     } catch (error) {
-      toast.error(`Erro ao atualizar item: ${error}`) // Alterado para "item"
+      toast.error(`Erro ao atualizar item: ${error}`)
     }
   }
 
@@ -187,7 +187,7 @@ const UpdateItemForm: FC<UpdateItemFormProps> = ({ initialItem }) => {
           <Button
             type="button"
             variant="outline"
-            onClick={() => router.push("/admin/item")} // Alterado para direcionar para "items"
+            onClick={() => router.push("/admin/item")}
           >
             Cancelar
           </Button>
@@ -197,4 +197,4 @@ const UpdateItemForm: FC<UpdateItemFormProps> = ({ initialItem }) => {
   )
 }
 
-export default UpdateItemForm // Alterado para "UpdateItemForm"
+export default UpdateItemForm
