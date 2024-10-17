@@ -110,6 +110,25 @@ model Booking {
   updatedAt DateTime          @updatedAt
 }
 
+
+model Order {
+  id          Int        @id @default(autoincrement())
+  totalPrice  Decimal    @db.Decimal(10, 2)
+  concluded   Boolean    @default(false)
+  items       OrderItem[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   Int
+  item      Item    @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId    String  
+  quantity  Int
+}
+
 model Item {
   id           String     @id @default(uuid())
   name         String
@@ -120,4 +139,5 @@ model Item {
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
+  orderItems   OrderItem[] 
 }
