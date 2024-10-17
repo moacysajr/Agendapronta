@@ -8,6 +8,7 @@ import {
   LogInIcon,
   LogOutIcon,
   Shield,
+  ShoppingCart, 
 } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
 import Link from "next/link"
@@ -105,7 +106,19 @@ const SidebarSheet: FC = () => {
             </Link>
           </Button>
         )}
+
+        <SheetClose asChild>
+          <Button className="justify-start gap-2" variant="ghost" asChild>
+            <Link href="/item">
+              <ShoppingCart size={18} />
+              Produtos
+            </Link>
+          </Button>
+        </SheetClose>
+
         <ModeToggle />
+
+
       </div>
       <Separator />
       {data?.user && (

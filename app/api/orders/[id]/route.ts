@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { NextResponse } from "next/server"
+import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ) {
   const id = parseInt(params.id)
   const { concluded } = await request.json()
@@ -18,6 +18,9 @@ export async function PUT(
 
     return NextResponse.json(updatedOrder)
   } catch (error) {
-    return NextResponse.json({ error: 'Erro ao atualizar o pedido' }, { status: 500 })
+    return NextResponse.json(
+      { error: "Erro ao atualizar o pedido" },
+      { status: 500 },
+    )
   }
 }
