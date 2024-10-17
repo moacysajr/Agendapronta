@@ -1,16 +1,19 @@
 "use client"
 
 import { useState } from "react"
-import { Order } from "@prisma/client"
 
-type OrderWithItems = Order & {
+// Definindo um tipo mais flexível para OrderWithItems
+type OrderWithItems = {
+  id: number
+  totalPrice: number | string // Aceita tanto number quanto string
+  concluded: boolean
   items: Array<{
     id: number
     quantity: number
     item: {
       id: string
       name: string
-      price: string
+      price: number | string // Aceita tanto number quanto string
     }
   }>
 }
@@ -38,8 +41,8 @@ export default function FinishClient({
     }
   }
 
-  const formatPrice = (price: string) => {
-    const numPrice = parseFloat(price)
+  const formatPrice = (price: number | string) => {
+    const numPrice = typeof price === 'string' ? parseFloat(price) : price
     return numPrice.toFixed(2)
   }
 
@@ -49,7 +52,7 @@ export default function FinishClient({
       {orders.map((order) => (
         <div key={order.id} className="mb-4 rounded border p-4">
           <h2 className="text-xl font-semibold">Pedido #{order.id}</h2>
-          <p>Total: R$ {formatPrice(order.totalPrice.toString())}</p>
+          <p>Total: R$ {formatPrice(order.totalPrice)}</p>
           <p>Status: {order.concluded ? "Concluído" : "Pendente"}</p>
           <h3 className="mt-2 text-lg font-semibold">Itens:</h3>
           <ul>
