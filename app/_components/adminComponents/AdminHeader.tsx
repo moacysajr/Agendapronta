@@ -7,6 +7,8 @@ import {
   Calendar,
   Home,
   LineChart,
+  PackageCheck,
+  ArchiveRestore,
   PanelLeft,
   Scissors,
   Users2,
@@ -99,9 +101,38 @@ const AdminHeader: FC<AdminHeaderProps> = ({}) => {
               <LineChart className="h-5 w-5" />
               Analytics
             </Link>
+            <Link
+              href="/admin/item"
+              className={cn(
+                "flex items-center gap-4 px-2.5",
+                pathname === "/admin/bookings"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <ArchiveRestore className="h-5 w-5" />
+              Item
+            </Link>
+
+            <Link
+              href="/admin/finish"
+              className={cn(
+                "flex items-center gap-4 px-2.5",
+                pathname === "/admin/bookings"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              <PackageCheck className="h-5 w-5" />
+              Concluir Pedido
+            </Link>
+
+
           </nav>
         </SheetContent>
       </Sheet>
+
+      
     </header>
   )
 }
