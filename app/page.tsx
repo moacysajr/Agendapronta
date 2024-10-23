@@ -10,6 +10,7 @@ import { FaWhatsapp } from "react-icons/fa"
 import CheckUserPhone from "./_components/check-user-phone"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
+import ShopItemsSection from "./_components/shopping-items-section"
 
 const BarbershopPage = async () => {
   const user = await getServerSession(authOptions)
@@ -99,7 +100,8 @@ const BarbershopPage = async () => {
           ))}
         </div>
       </div>
-
+        {/* PRODUTOS */}
+      <ShopItemsSection />
       {/* CONTATO */}
       <div className="space-y-3 p-5">
         <h2 className="mb-4 text-xs font-bold uppercase text-gray-400">
