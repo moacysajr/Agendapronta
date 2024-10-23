@@ -166,7 +166,7 @@ const ShopItemsSection: React.FC = () => {
 
       <div className="flex flex-col gap-4">
         {items.map((item) => (
-          <div key={item.id} className="flex items-center gap-4 bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+          <div key={item.id} className="flex items-center gap-4  p-4 shadow-sm hover:shadow-md transition-shadow">
             <div className="relative h-20 w-20 flex-shrink-0">
               <Image
                 src={item.imageUrl || "/placeholder.png"}
@@ -230,7 +230,7 @@ const ShopItemsSection: React.FC = () => {
     <SheetTrigger asChild>
       <Button
         size="lg"
-        className="rounded-full w-14 h-14 shadow-lg relative flex items-center justify-center"
+        className="rounded-full  shadow-lg relative flex items-center justify-center"
       >
         <ShoppingCart className="h-6 w-6" />
         {cart.length > 0 && (
