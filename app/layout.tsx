@@ -10,9 +10,9 @@ import { ThemeProvider } from "./_components/ThemeProvider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "BarberMG Demo",
+  title: "Agenda Pronta",
   description:
-    "Demonstração da plataforma de agendamento de pedidos de barbeiro BarberMG",
+    "Demonstração da plataforma de agendamento de pedidos de barbeiro Agenda Pronta",
 }
 
 export default function RootLayout({
