@@ -28,7 +28,7 @@ const BarbershopPage = async () => {
     <div>
       {user && <CheckUserPhone />}
 
-      {/* IMAGEM */}
+      {/* IMAGEM .,.*/}
       <div className="relative h-[250px] w-full">
         <Image
           alt={barbershop.name}
